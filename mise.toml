@@ -1,0 +1,8 @@
+[tools]
+go = "latest"
+ko = "latest"
+
+[tasks.docker]
+description = "Build a local docker image with ko"
+env = { KO_DOCKER_REPO = "ko.local" }
+run = "ko build --local --base-import-paths ."
