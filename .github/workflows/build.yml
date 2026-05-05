@@ -28,7 +28,7 @@ jobs:
 
       - name: Build and push
         run: |
-          tags="sha-${GITHUB_SHA::7}"
+          tags="sha-${GITHUB_SHA::7},build-${GITHUB_RUN_NUMBER}"
           if [ "$GITHUB_REF" = "refs/heads/${{ github.event.repository.default_branch }}" ]; then
             tags="$tags,latest"
           fi
