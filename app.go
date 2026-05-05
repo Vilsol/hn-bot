@@ -10,7 +10,7 @@ import (
 )
 
 const (
-	pollInterval = 5 * time.Minute
+	pollInterval = time.Minute
 	topN         = 10
 	minScore     = 50
 	maxAge       = 12 * time.Hour

@@ -1,0 +1,15 @@
+services:
+  hn-bot:
+    image: ghcr.io/vilsol/hn-bot:latest
+    restart: unless-stopped
+    working_dir: /data
+    command:
+      - ${HN_BOT_TOKEN:?HN_BOT_TOKEN is required}
+      - ${HN_BOT_CHAT_ID:?HN_BOT_CHAT_ID is required}
+    volumes:
+      - ./data:/data
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
