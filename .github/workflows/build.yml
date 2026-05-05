@@ -10,8 +10,6 @@ permissions:
 jobs:
   ko:
     runs-on: ubuntu-latest
-    env:
-      KO_DOCKER_REPO: ghcr.io/${{ github.repository }}
     steps:
       - uses: actions/checkout@v4
 
@@ -22,6 +20,11 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Resolve image name
+        env:
+          REPO: ${{ github.repository }}
+        run: echo "KO_DOCKER_REPO=ghcr.io/${REPO,,}" >> "$GITHUB_ENV"
 
       - name: Build and push
         run: |
